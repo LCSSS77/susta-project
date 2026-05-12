@@ -5,10 +5,10 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4 # Passage en v4
     
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5 # Passage en v5
       with:
         python-version: '3.9'
         
@@ -18,10 +18,10 @@ jobs:
         
     - name: Build EXE
       run: |
-        pyinstaller --noconsole --onefile --name "Susta_Win" susta.py
+        python -m PyInstaller --noconsole --onefile --name "Susta_Win" susta.py
         
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4 # La version v4 qui corrige ton erreur
       with:
         name: Susta-Windows-Exe
         path: dist/Susta_Win.exe
